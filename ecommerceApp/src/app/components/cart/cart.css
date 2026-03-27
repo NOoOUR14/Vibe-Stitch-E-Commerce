@@ -1,0 +1,25 @@
+.container {
+  min-height: 60vh;
+}
+
+.table th {
+  border-top: none;
+  color: #666;
+  font-weight: 500;
+}
+
+.btn-outline-dark {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  line-height: 1;
+}
+
+.text-success {
+  font-weight: bold;
+}
+
+.btn-dark {
+  border-radius: 0;
+  padding: 12px 40px;
+}

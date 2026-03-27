@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Product Management</h2>
+    <button class="btn btn-dark rounded-pill px-4" (click)="openAddModal()">
+      <i class="fas fa-plus me-2"></i> Add New Product
+    </button>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+    <table class="table align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="ps-3">Product</th>
+          <th>Price</th>
+          <th>Gender</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products(); track product._id) {
+        <tr>
+          <td class="ps-3">
+            <img [src]="product.image" class="rounded me-2" style="width: 45px; height: 45px; object-fit: cover;">
+            <span class="fw-bold">{{ product.name }}</span>
+          </td>
+          <td>{{ product.price }} EGP</td>
+          <td>
+            <span class="badge rounded-pill" [ngClass]="product.gender === 'men' ? 'bg-primary' : 'bg-danger'">
+              {{ product.gender }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-primary border-0 me-2" (click)="openEditModal(product)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger border-0" (click)="deleteProduct(product._id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="text-center py-5">No products found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title fw-bold">
+          {{ isEditMode() ? 'Edit Product' : 'Add New Product' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Name</label>
+            <input type="text" name="name" [ngModel]="selectedProduct.name" class="form-control" required>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Price (EGP)</label>
+              <input type="number" name="price" [ngModel]="selectedProduct.price" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Gender</label>
+              <select name="gender" [ngModel]="selectedProduct.gender" class="form-select" required>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-bold">Image URL</label>
+            <input type="text" name="image" [ngModel]="selectedProduct.image" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-dark w-100 py-2 fw-bold" [disabled]="!productForm.valid">
+            <i class="fas fa-save me-2"></i> {{ isEditMode() ? 'Update Changes' : 'Save Product' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

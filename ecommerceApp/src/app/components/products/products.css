@@ -1,0 +1,10 @@
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: 80vh;
+}
+
+hr {
+  margin: 3rem 0;
+  opacity: 0.1;
+}

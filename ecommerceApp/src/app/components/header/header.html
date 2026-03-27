@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black py-3 fixed-top">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand fw-bold fs-4" routerLink="/">VIBE & STITCH</a>
+
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-uppercase small fw-medium">
+        <li class="nav-item">
+          <a class="nav-link px-3" routerLink="/products" [queryParams]="{ filter: 'all' }" routerLinkActive="active">All Collection</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link px-3" routerLink="/products" [queryParams]="{ gender: 'men' }" routerLinkActive="active">Men's Wear</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link px-3" routerLink="/products" [queryParams]="{ gender: 'women' }" routerLinkActive="active">Women's Wear</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="catDrop" data-bs-toggle="dropdown">Categories</a>
+          <ul class="dropdown-menu dropdown-menu-dark bg-black border-secondary">
+            <li><a class="dropdown-item small" routerLink="/products" [queryParams]="{ category: 't-shirts' }">T-Shirts</a></li>
+            <li><a class="dropdown-item small" routerLink="/products" [queryParams]="{ category: 'hoodies' }">Hoodies</a></li>
+            <li><a class="dropdown-item small" routerLink="/products" [queryParams]="{ category: 'pants' }">Pants</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link px-3 text-white" routerLink="/products/new-arrivals" routerLinkActive="active">New Arrivals</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+        <div class="position-relative">
+          <input type="text" #searchInput (keyup.enter)="onSearch(searchInput.value)" class="form-control form-control-sm bg-secondary border-0 text-white" placeholder="Search products..." style="width: 150px; opacity: 0.6; border-radius: 20px;">
+        </div>
+
+        <a routerLink="/cart" class="text-white position-relative px-2">
+  <i class="bi bi-bag fs-5"></i>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+    {{ cartCount }}
+  </span>
+</a>
+
+        <div class="auth-section d-flex align-items-center">
+          <ng-container *ngIf="!authService.isLoggedIn()">
+            <a routerLink="/login" class="text-white text-decoration-none small fw-bold me-3">LOGIN</a>
+            <a routerLink="/register" class="btn btn-outline-light btn-sm fw-bold">REGISTER</a>
+          </ng-container>
+          <ng-container *ngIf="authService.isLoggedIn()">
+            <button (click)="logout()" class="btn btn-sm btn-danger fw-bold">LOGOUT</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

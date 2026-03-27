@@ -1,0 +1,40 @@
+<div class="product-card"
+    [routerLink]="['/products', product._id]"
+    routerLinkActive="active"
+      style="cursor: pointer;">
+
+  <div class="category-badge">{{ product.gender | uppercase }}</div>
+
+  <img [src]="product.image"
+    [alt]="product.name"
+      class="product-image">
+
+  <div class="product-info">
+    <h3 class="product-title">{{ product.name }}</h3>
+
+    <span class="product-sku">Code: #{{ product._id ? product._id.substring(0,6) : 'N/A' }}</span>
+
+    <div class="stars-row">
+      <i class="fa fa-star text-warning"></i>
+      <i class="fa fa-star text-warning"></i>
+      <i class="fa fa-star text-warning"></i>
+      <i class="fa fa-star text-warning"></i>
+      <i class="fa fa-star-half text-warning"></i>
+      <span class="rating-val">(4.5)</span>
+    </div>
+
+    <div class="details-row">
+      <span class="price-val">{{ product.price | currency }}</span>
+
+      <span class="quantity-info" *ngIf="product.quantity < 5">
+        Stock: {{ product.quantity }}
+      </span>
+    </div>
+
+    <button class="add-to-cart-btn"
+            (click)="$event.stopPropagation(); addToCart(product)"
+            [disabled]="product.quantity <= 0">
+      {{ product.quantity > 0 ? 'Add to Cart' : 'Out of Stock' }}
+    </button>
+  </div>
+</div>

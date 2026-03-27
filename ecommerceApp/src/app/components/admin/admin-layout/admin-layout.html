@@ -1,0 +1,38 @@
+<div class="admin-wrapper d-flex">
+  <nav class="admin-sidebar bg-black text-white p-4 shadow-lg" style="min-height: 100vh; width: 260px;">
+    <h4 class="fw-bold mb-5 text-center border-bottom pb-3 border-secondary" style="letter-spacing: 2px;">
+      V&S <span class="text-danger">ADMIN</span>
+    </h4>
+
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a routerLink="dashboard" routerLinkActive="active-link" class="nav-link text-secondary-emphasis d-flex align-items-center p-3 rounded transition">
+          <i class="fa fa-th-large me-3"></i> Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item mb-2">
+        <a routerLink="manage-products" routerLinkActive="active-link" class="nav-link text-secondary-emphasis d-flex align-items-center p-3 rounded transition">
+          <i class="fa fa-box me-3"></i> Manage Products
+        </a>
+      </li>
+
+      <li class="nav-item mb-2">
+        <a routerLink="manage-reviews" routerLinkActive="active-link" class="nav-link text-secondary-emphasis d-flex align-items-center p-3 rounded transition">
+          <i class="fa fa-star me-3 text-warning"></i> Manage Reviews
+          <span class="badge bg-danger ms-auto rounded-pill" style="font-size: 0.6rem;">New</span>
+        </a>
+      </li>
+
+      <li class="nav-item mt-auto pt-5">
+        <a (click)="logout()" class="nav-link text-danger d-flex align-items-center p-3 cursor-pointer fw-bold border-top border-secondary mt-5">
+          <i class="fa fa-sign-out me-3"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="admin-content flex-grow-1 p-5 bg-light" style="overflow-y: auto; max-height: 100vh;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

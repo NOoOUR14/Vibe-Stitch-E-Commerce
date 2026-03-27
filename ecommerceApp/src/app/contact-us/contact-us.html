@@ -1,0 +1,24 @@
+<div class="contact-container">
+  <div class="contact-header">
+    <h1>GET IN TOUCH</h1>
+    <p>Have a question? We're here to help.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Office</h3>
+      <p>Cairo, Egypt</p>
+      <h3>Email</h3>
+      <p>support@vibeandstitch.com</p>
+      <h3>GitHub</h3>
+      <p><a href="https://github.com/NOoOUR14" target="_blank">NOoOUR14</a></p>
+    </div>
+
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
+      <input type="text" name="name" ngModel placeholder="Name" required>
+      <input type="email" name="email" ngModel placeholder="Email" required>
+      <textarea name="message" ngModel placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">SEND MESSAGE</button>
+    </form>
+  </div>
+</div>

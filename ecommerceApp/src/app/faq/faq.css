@@ -1,0 +1,23 @@
+.faq-container {
+    color: white;
+}
+
+.accordion-button::after {
+    filter: invert(1); 
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    color: #dc3545 !important;
+    box-shadow: none;
+}
+
+.accordion-item {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.accordion-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #adb5bd;
+}

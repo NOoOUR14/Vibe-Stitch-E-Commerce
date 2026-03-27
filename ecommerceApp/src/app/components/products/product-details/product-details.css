@@ -1,0 +1,120 @@
+.container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.product-image-container {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 450px;
+    border: 1px solid #eeeeee !important;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.main-product-image {
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.product-image-container:hover .main-product-image {
+    transform: scale(1.08);
+}
+
+.product-info h1 {
+    color: #111111;
+    font-size: 2.8rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+}
+
+.product-info .fs-5 {
+    color: #666666;
+    line-height: 1.6;
+}
+
+.text-dark.h2 {
+    font-weight: 800;
+    color: #000000;
+}
+
+.badge {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 15px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.border-success {
+    border-color: #28a745 !important;
+}
+
+.border-danger {
+    border-color: #dc3545 !important;
+}
+
+.btn-dark {
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-dark:hover:not(:disabled) {
+    background-color: #333333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.btn-dark:disabled {
+    background-color: #dddddd;
+    color: #888888;
+    cursor: not-allowed;
+}
+
+.breadcrumb-item a {
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+    color: #000000;
+}
+
+.breadcrumb-item.active {
+    font-weight: 600;
+    color: #000000;
+}
+
+.spinner-border {
+    color: #000000 !important;
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-info h1 {
+        font-size: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .product-image-container {
+        min-height: 300px;
+    }
+
+    .main-product-image {
+        max-height: 350px;
+    }
+}

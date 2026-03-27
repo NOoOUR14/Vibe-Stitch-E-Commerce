@@ -1,0 +1,37 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh; padding-top: 80px;">
+  <div class="card shadow-sm border-0 p-4" style="width: 100%; max-width: 450px;">
+    <h2 class="fw-bold mb-4 text-center text-dark">Create Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label fw-medium">Full Name</label>
+        <input type="text" formControlName="name" class="form-control" placeholder="Enter your name">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-medium">Email Address</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-medium">Password</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="Min 6 characters">
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-medium">Confirm Password</label>
+        <input type="password" formControlName="passwordConfirm" class="form-control" placeholder="Repeat your password">
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-dark w-100 py-2 fw-bold shadow-sm">
+        SIGN UP
+      </button>
+
+      <div class="text-center mt-3">
+        <span class="small text-muted">Already have an account? </span>
+        <a routerLink="/login" class="small fw-bold text-dark text-decoration-none">Login</a>
+      </div>
+    </form>
+  </div>
+</div>

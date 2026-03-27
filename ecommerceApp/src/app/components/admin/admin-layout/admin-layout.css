@@ -1,0 +1,28 @@
+.admin-sidebar {
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  color: #adb5bd !important;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff !important;
+}
+
+.active-link {
+  background: #dc3545 !important; 
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.transition {
+  transition: 0.3s ease-in-out;
+}

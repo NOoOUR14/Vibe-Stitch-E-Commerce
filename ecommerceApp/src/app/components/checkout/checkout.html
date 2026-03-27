@@ -1,0 +1,102 @@
+<div class="container my-5 pt-5">
+  <div class="row g-5">
+
+    <div class="col-lg-7 order-2 order-lg-1">
+      <div class="card shadow-sm border-0 p-4">
+        <h4 class="fw-bold mb-4" style="color: #222;">Recipient Information</h4>
+
+        <form [formGroup]="checkoutForm" (ngSubmit)="confirmOrder()">
+          <div class="mb-3">
+            <label class="form-label fw-medium">Full Name</label>
+            <input type="text" formControlName="fullName" class="form-control py-2" placeholder="please enter your full name">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Receiver Address (Street)</label>
+            <textarea formControlName="street" class="form-control" rows="2" placeholder="Building no, Street name..."></textarea>
+            <small class="text-danger" *ngIf="checkoutForm.get('street')?.touched && checkoutForm.get('street')?.invalid">
+              Address is required.
+            </small>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-medium">City</label>
+              <input type="text" formControlName="city" class="form-control" placeholder="Cairo">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-medium">Phone Number</label>
+              <input type="text" formControlName="phone" class="form-control" placeholder="01xxxxxxxxx">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Gender</label>
+            <select formControlName="gender" class="form-select">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <hr class="my-4">
+
+          <h5 class="fw-bold mb-3">Payment Method</h5>
+          <div class="p-3 border rounded bg-light d-flex align-items-center mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" checked>
+              <label class="form-check-label ms-2 fw-bold">
+                Cash on Delivery (الدفع كاش عند الاستلام)
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" [disabled]="cartItems().length === 0" class="btn btn-dark btn-lg w-100 py-3 fw-bold shadow-sm">
+            CONFIRM ORDER ({{ getTotal() | currency }})
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-5 order-1 order-lg-2">
+      <div class="card shadow-sm border-0 p-4 sticky-top" style="top: 100px; background-color: #fcfcfc;">
+        <h4 class="fw-bold mb-4">Your Order</h4>
+
+        <div class="order-list pe-2" style="max-height: 400px; overflow-y: auto;">
+          <div *ngFor="let item of cartItems()" class="d-flex align-items-center mb-3 pb-3 border-bottom border-light">
+            <div class="position-relative">
+              <img [src]="item.image || item.imgUrl" width="65" height="75" class="rounded object-fit-cover shadow-sm">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+                1
+              </span>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h6 class="mb-0 fw-bold small">{{ item.name }}</h6>
+              <p class="text-muted mb-0 small">Price: {{ item.price | currency }}</p>
+            </div>
+            <div class="fw-bold text-dark">
+              {{ item.price | currency }}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted">Subtotal</span>
+            <span class="fw-medium">{{ getTotal() | currency }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted">Shipping</span>
+            <span class="text-success fw-bold">FREE</span>
+          </div>
+          <hr class="my-3">
+          <div class="d-flex justify-content-between fs-4 fw-bold text-dark">
+            <span>Total</span>
+            <span>{{ getTotal() | currency }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
