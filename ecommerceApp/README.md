@@ -7,7 +7,7 @@ This is a comprehensive e-commerce platform for a clothing brand, featuring a cu
 ## 🖥️ Admin Dashboard Preview
 Here is a look at the admin management interface:
 
-![Admin Dashboard](dashboard-screenshot.png)
+![dashboard-screenshot](https://github.com/user-attachments/assets/929e4db8-a16d-46b9-9a20-95279bc12b29)
 
 ---
 
